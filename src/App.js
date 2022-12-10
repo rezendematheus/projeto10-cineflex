@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Header from "./components/Header";
+import Movies from "./pages/Movies";
+import Resume from "./pages/Resume";
+import Schedule from "./pages/Schedule";
+import SitSelection from "./pages/SitSelection";
+import GlobalStyle from "./theme/globalStyle"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Movies />} />
+          <Route path="/schedule/:movieId" element={<Schedule />} />
+          <Route path="/sitselection/:scheduleId" element={<SitSelection />} />
+          <Route path="/resume" element={<Resume />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
