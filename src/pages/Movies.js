@@ -23,7 +23,7 @@ export default function Movies() {
             <StyledMovies>
                 {arrMovies.map(movie => (
                     <Link to={`/schedule/${movie.id}`}>
-                        <div>
+                        <div data-test="movie">
                             <img src={movie.posterURL} alt={`${movie.id}`} />
                         </div>
                     </Link>

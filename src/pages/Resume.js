@@ -4,7 +4,6 @@ import styled from "styled-components"
 
 
 export default function Resume({ resume }) {
-    console.log(resume);
     const { movie, day, hour, seats, form } = resume.objResume
     return (
         <Content>
@@ -94,7 +93,7 @@ const HomeButton = styled.button`
 
     width: 225px;
     height: 42px;
-    margin-top: 90px;
+    margin-top: 110px;
 
     background-color: #E8833A;
     border-radius: 3px;

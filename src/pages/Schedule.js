@@ -6,14 +6,15 @@ import styled from "styled-components"
 
 
 export default function Schedule() {
+    const [info, setInfo] = useState()
+    console.log(info)
     let { movieId } = useParams()
     const [arrSchedule, setArrSchedule] = useState(undefined)
     useEffect(() => {
         axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/movies/${movieId}/showtimes`)
-            .then(res => setArrSchedule(res.data.days))
+            .then(res => {setArrSchedule(res.data.days); setInfo(res.data)})
             .catch(err => console.log(err.response.data))
     }, [])
-    console.log(arrSchedule)
     if (arrSchedule === undefined) {
         return (
             <p>Carregando...</p>
@@ -39,12 +40,16 @@ export default function Schedule() {
                 </StyledSchedule>
             ))
             }
+            <Footer>
+                <div><img src={info.posterURL} alt="selec muv"/></div>
+                <span>{info.title}</span>
+            </Footer>
         </Content>
 
     )
 }
 const Content = styled.div`
-    font-family: 'Roboto', sans-serif;  
+    font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     p {
@@ -88,4 +93,41 @@ const Botao = styled.div`
 const ContainerBotoes = styled.div`
     display: flex;
     gap: 0px 9px;
+`
+
+const Footer = styled.div`
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+
+    width: 374px;
+    height: 109px;
+
+    display: flex;
+    align-items: center;
+    gap: 0px 25px;
+
+    box-sizing: border-box;
+    background-color: #DFE6ED;
+    border: 1px solid #9EADBA;
+
+    div{
+        background-color: #FFFFFF;
+        width: 64px;
+        height: 89px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+    }
+    img{
+        width: 48px;
+        height: 72px;
+    }
+    span{
+        font-size: 24px;
+        color: #293845;
+    }
 `

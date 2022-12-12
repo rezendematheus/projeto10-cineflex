@@ -91,15 +91,19 @@ export default function SitSelection({resume, setResume}) {
                 <form onSubmit={postSeats}>
                     <label>
                         Nome do comprador:
-                        <input name="name" placeholder="Digite seu nome..." type="text" value={form.name} onChange={handleForm}/>
+                        <input required name="name" placeholder="Digite seu nome..." type="text" value={form.name} onChange={handleForm}/>
                     </label>
                     <label>
                         CPF do comprador:
-                        <input name="cpf" placeholder="Digite seu CPF..." type="number" value={form.cpf} onChange={handleForm}/>
+                        <input required name="cpf" placeholder="Digite seu CPF..." type="number" value={form.cpf} onChange={handleForm}/>
                     </label>
                     <button type="submit">{`Reservar assento(s)`}</button>
                 </form>
             </StyledSitSelection>
+            <Footer>
+                <div><img src={sits.movie.posterURL} alt="selec muv"/></div>
+                <span>{sits.movie.title} <br/> {sits.day.weekday} - {sits.day.date}</span>
+            </Footer>
         </Content>
 
     )
@@ -121,14 +125,15 @@ const Content = styled.div`
         justify-content: center;
         margin-top: 60px;
         width: 100%;
-        height: 110px;
+        height: 70px;
+        padding-top: 30px;
     }
     a {
         color: inherit;
         text-decoration: inherit;
     }
     form{                   
-        margin-top: 40px;
+        margin-top: 55px;
         width: 320px;
         display: flex;
         align-items: center;
@@ -196,5 +201,42 @@ const Label = styled.div`
         align-items: center;
         background-color: ${props => props.color.inner};
         border: 1px solid ${props => props.color.border};
+    }
+`
+
+const Footer = styled.div`
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+
+    width: 374px;
+    height: 109px;
+
+    display: flex;
+    align-items: center;
+    gap: 0px 10px;
+
+    box-sizing: border-box;
+    background-color: #DFE6ED;
+    border: 1px solid #9EADBA;
+
+    div{
+        background-color: #FFFFFF;
+        width: 64px;
+        height: 89px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+    }
+    img{
+        width: 48px;
+        height: 72px;
+    }
+    span{
+        font-size: 24px;
+        color: #293845;
     }
 `
