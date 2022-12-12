@@ -44,6 +44,7 @@ export default function Schedule() {
     )
 }
 const Content = styled.div`
+    font-family: 'Roboto', sans-serif;  
     display: flex;
     flex-direction: column;
     p {

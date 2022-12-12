@@ -38,8 +38,9 @@ const Loading = styled.div`
 const StyledMovies = styled.div`
     box-sizing: border-box;
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
-    width: 90%;
+    width: 86%;
     gap: 11px 30px;
     div{
         width: 145px;
@@ -56,6 +57,7 @@ const StyledMovies = styled.div`
     }
 `
 const Content = styled.div`
+    font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;

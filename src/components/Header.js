@@ -2,11 +2,12 @@ import styled from "styled-components"
 
 export default function Header(){
     return(
-        <StyledHeader>Cineflex</StyledHeader>
+        <StyledHeader>CINEFLEX</StyledHeader>
     )
 }
 
 const StyledHeader = styled.div`
+    font-family: 'Roboto', sans-serif;
     width: 100%;
     height: 67px;
     font-size: 34px;

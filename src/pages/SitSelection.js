@@ -42,7 +42,7 @@ export default function SitSelection({resume, setResume}) {
                 ))],
                 form:form
             };
-            console.log(objResume); 
+            setResume({...resume, objResume}); 
             navigate("/resume")
     })
         .catch(err => console.log(err.response.data))
@@ -50,7 +50,7 @@ export default function SitSelection({resume, setResume}) {
 
     useEffect(() => {
         axios.get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${scheduleId}/seats`)
-            .then((res) => console.log(res.data))
+            .then((res) => setSits(res.data))
             .catch(err => err.response.data)
     }, [])
 
@@ -109,6 +109,7 @@ const StyledSitSelection = styled.div`
 `
 
 const Content = styled.div`
+    font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
